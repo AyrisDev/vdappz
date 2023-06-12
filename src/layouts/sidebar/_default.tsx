@@ -8,7 +8,7 @@ import { useDrawer } from '@/components/drawer-views/context';
 import { Close } from '@/components/icons/close';
 import { menuItems } from '@/layouts/sidebar/_menu-items';
 //images
-import AuthorImage from '@/assets/images/author.jpg';
+import AuthorImage from '@/assets/avatar.png';
 
 export default function Sidebar({ className }: { className?: string }) {
   const { closeDrawer } = useDrawer();
@@ -37,11 +37,7 @@ export default function Sidebar({ className }: { className?: string }) {
 
       <Scrollbar style={{ height: 'calc(100% - 96px)' }}>
         <div className="px-6 pb-5 2xl:px-8">
-          <AuthorCard
-            image={AuthorImage}
-            name="Cameron Williamson"
-            role="admin"
-          />
+          <AuthorCard image={AuthorImage} name="Ayris.Dev" role="admin" />
 
           <div className="mt-12">
             {menuItems.map((item, index) => (

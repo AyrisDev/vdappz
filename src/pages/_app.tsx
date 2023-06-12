@@ -18,6 +18,9 @@ import '@/assets/css/globals.css';
 import '@/assets/css/range-slider.css';
 import { useState } from 'react';
 
+import { GrazProvider } from '@ayris-dev/cosmoshooks';
+import { vinceTestnet } from '@/hooks/useVince';
+
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
@@ -41,23 +44,29 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           name="viewport"
           content="width=device-width, initial-scale=1 maximum-scale=1"
         />
-        <title>Criptic - React Next Web3 NFT Crypto Dashboard Template</title>
+        <title>{process.env.NEXT_PUBLIC_SITE_TITLE}</title>
       </Head>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider
           attribute="class"
           enableSystem={false}
-          defaultTheme="light"
+          defaultTheme="dark"
         >
-          <WalletProvider>
-            {/* <div className={`${firaCode.variable} font-body`}> */}
-            {getLayout(<Component {...pageProps} />)}
-            <SettingsButton />
-            <SettingsDrawer />
-            <ModalsContainer />
-            <DrawersContainer />
-            {/* </div> */}
-          </WalletProvider>
+          <GrazProvider
+            grazOptions={{
+              defaultChain: vinceTestnet,
+            }}
+          >
+            <WalletProvider>
+              {/* <div className={`${firaCode.variable} font-body`}> */}
+              {getLayout(<Component {...pageProps} />)}
+              <SettingsButton />
+              <SettingsDrawer />
+              <ModalsContainer />
+              <DrawersContainer />
+              {/* </div> */}
+            </WalletProvider>
+          </GrazProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </>

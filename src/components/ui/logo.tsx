@@ -4,7 +4,7 @@ import AnchorLink from '@/components/ui/links/anchor-link';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useIsDarkMode } from '@/lib/hooks/use-is-dark-mode';
 import lightLogo from '@/assets/images/logo.svg';
-import darkLogo from '@/assets/images/logo-white.svg';
+import darkLogo from '@/assets/logo-white.png';
 import routes from '@/config/routes';
 import { LAYOUT_OPTIONS } from '@/lib/constants';
 
@@ -26,14 +26,14 @@ export default function Logo() {
             },
           }),
       }}
-      className="flex w-28 outline-none sm:w-32 4xl:w-36"
+      className="flex w-28 outline-none sm:w-48"
     >
       <span className="relative flex overflow-hidden">
         {isMounted && isDarkMode && (
-          <Image src={darkLogo} alt="Criptic" height={24} priority />
+          <Image src={darkLogo} alt="VinceChain" height={60} priority />
         )}
         {isMounted && !isDarkMode && (
-          <Image src={lightLogo} alt="Criptic" height={24} priority />
+          <Image src={darkLogo} alt="VinceChain" height={60} priority />
         )}
       </span>
     </AnchorLink>

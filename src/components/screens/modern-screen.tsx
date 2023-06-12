@@ -12,7 +12,7 @@ import Avatar from '@/components/ui/avatar';
 import TopupButton from '@/components/ui/topup-button';
 
 //images
-import AuthorImage from '@/assets/images/author.jpg';
+import AuthorImage from '@/assets/avatar.png';
 
 export default function ModernScreen() {
   return (
@@ -34,7 +34,7 @@ export default function ModernScreen() {
               size="lg"
             />
             <h3 className="mb-2 text-center text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 3xl:mb-3">
-              My Balance
+              My Balancesss
             </h3>
             <div className="mb-7 text-center font-medium tracking-tighter text-gray-900 dark:text-white xl:text-2xl 3xl:mb-8 3xl:text-[32px]">
               $10,86,000
