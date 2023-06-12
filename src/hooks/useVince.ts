@@ -9,7 +9,7 @@ const VCE = {
 };
 
 export const vinceTestnet = {
-  rpc: 'http://testnet.vincescan.com/',
+  rpc: 'https://testnet.vincescan.com/',
   rest: 'http://154.53.47.14:1317',
   chainId: 'vince_1903-1',
   chainName: 'VinceChain ',

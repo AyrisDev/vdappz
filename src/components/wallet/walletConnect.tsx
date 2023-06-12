@@ -7,7 +7,7 @@ import {
   useAccount,
   useDisconnect,
   useBalance,
-} from '@ayris-dev/cosmoshooks';
+} from 'graz';
 import Image from 'next/image';
 import Avatar from '@/assets/avatar.png';
 import { useEffect, useState } from 'react';

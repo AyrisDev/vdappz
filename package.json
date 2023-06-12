@@ -26,6 +26,7 @@
     "dayjs": "^1.11.7",
     "ethers": "^5.7.2",
     "framer-motion": "^10.10.0",
+    "graz": "^0.0.41",
     "jotai": "^1.8.6",
     "js-cookie": "^3.0.1",
     "little-state-machine": "^4.8.0",

@@ -18,7 +18,7 @@ import '@/assets/css/globals.css';
 import '@/assets/css/range-slider.css';
 import { useState } from 'react';
 
-import { GrazProvider } from '@ayris-dev/cosmoshooks';
+import { GrazProvider } from 'graz';
 import { vinceTestnet } from '@/hooks/useVince';
 
 type AppPropsWithLayout = AppProps & {
@@ -60,8 +60,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
             <WalletProvider>
               {/* <div className={`${firaCode.variable} font-body`}> */}
               {getLayout(<Component {...pageProps} />)}
-              <SettingsButton />
-              <SettingsDrawer />
+
               <ModalsContainer />
               <DrawersContainer />
               {/* </div> */}
