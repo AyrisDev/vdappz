@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
+
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from '@material-tailwind/react';
 import { ChevronDown } from '@/components/icons/chevron-down';
 import { LongArrowRight } from '@/components/icons/long-arrow-right';
 import Button from '@/components/ui/button';
@@ -14,7 +20,7 @@ import {
 } from 'react-table';
 import { LongArrowLeft } from '@/components/icons/long-arrow-left';
 import CryptocurrencyDrawer from '@/components/cryptocurrency-pricing-table/cryptocurrency-drawer';
-
+import { CoinPriceData } from '@/data/static/coin-market-data';
 function CryptocurrencyAccordionTable({
   // @ts-ignore
   columns,
@@ -51,7 +57,11 @@ function CryptocurrencyAccordionTable({
   const { pageIndex } = state;
   const { globalFilter } = state;
   const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(1);
 
+  const handleOpen = (value: any) => {
+    setOpen(open === value ? 0 : value);
+  };
   return (
     <div className="relative z-20 mt-11 flex flex-col overflow-hidden rounded-lg shadow-card lg:flex-row">
       <div className="w-full transform transition duration-300 ease-in">
@@ -63,7 +73,7 @@ function CryptocurrencyAccordionTable({
               }`}
             >
               <h2 className="shrink-0 pl-[10px] text-lg font-medium uppercase text-black dark:text-white sm:text-xl md:pl-0 2xl:text-xl 3xl:text-2xl">
-                Cryptocurrency Prices
+                Assets
               </h2>
               <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             </div>
@@ -120,29 +130,56 @@ function CryptocurrencyAccordionTable({
                   {...getTableBodyProps()}
                   className="pricing-table-body grid bg-white text-xs font-medium text-gray-900  dark:bg-light-dark dark:text-white md:px-6 3xl:text-sm"
                 >
-                  {page.map((row, idx) => {
-                    prepareRow(row);
-                    return (
-                      <tr
-                        {...row.getRowProps()}
-                        key={idx + 1}
-                        className="h-[50px] max-h-[50px] cursor-pointer items-center rounded uppercase transition-all last:mb-0 hover:bg-[#F3F4F6] dark:bg-light-dark hover:dark:bg-gray-700"
-                        onClick={() => setIsOpen(!isOpen)}
-                      >
-                        {row.cells.map((cell, idx) => {
-                          return (
-                            <td
-                              {...cell.getCellProps()}
-                              key={idx}
-                              className={`flex h-[50px] items-center px-3 tracking-[1px]`}
-                            >
-                              {cell.render('Cell')}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    );
-                  })}
+                  <Fragment>
+                    {CoinPriceData.map((post: any) => (
+                      <div key={post.id}>
+                        <Accordion open={open === post.id}>
+                          <AccordionHeader onClick={() => handleOpen(post.id)}>
+                            <div className="items-left grid h-[50px] max-h-[50px] w-full cursor-pointer grid-cols-4 rounded text-left uppercase transition-all last:mb-0 hover:bg-[#F3F4F6] dark:bg-light-dark hover:dark:bg-gray-700">
+                              <div className="flex items-center  gap-2">
+                                {post.image}
+                                {post.name}
+                              </div>
+                              <div className="flex items-center  gap-2">
+                                vce {post.current_pricevce}
+                              </div>
+                              <div className="flex items-center  gap-2">
+                                btc {post.current_price}
+                              </div>
+                              <div className="flex items-center  gap-2">
+                                total balance
+                              </div>
+                            </div>
+                          </AccordionHeader>
+                          <AccordionBody>
+                            <div className=" bg-gray-900  p-5">
+                              <div className="grid grid-cols-3">
+                                <div>
+                                  <div className="flex items-center  gap-2">
+                                    {post.image}
+                                    {post.name}
+                                  </div>
+                                </div>
+                                <div>Total Balance</div>
+                                <div>
+                                  <div className="flex flex-col items-center  gap-2">
+                                    <button className="rounded-full border border-2 border-white p-2">
+                                      {' '}
+                                      Send{' '}
+                                    </button>
+                                    <button className="rounded-full border border-2 border-white p-2">
+                                      {' '}
+                                      Receive{' '}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </AccordionBody>
+                        </Accordion>
+                      </div>
+                    ))}
+                  </Fragment>
                 </tbody>
               </table>
             </div>

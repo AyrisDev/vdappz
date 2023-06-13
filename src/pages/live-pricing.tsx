@@ -58,19 +58,6 @@ function CoinPrices() {
   //   return <div>Error: {error.message}</div>;
   // }
 
-  if (layout === LAYOUT_OPTIONS.RETRO) {
-    return (
-      <>
-        <NextSeo
-          title="Live Pricing"
-          description="Criptic - React Next Web3 NFT Crypto Dashboard Template"
-        />
-        <LivePricingSliderRetro limits={3} />
-        <CryptocurrencyPricingRetroTable />
-      </>
-    );
-  }
-
   return (
     <>
       <NextSeo

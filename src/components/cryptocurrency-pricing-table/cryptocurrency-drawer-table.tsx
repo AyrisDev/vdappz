@@ -64,7 +64,7 @@ function CryptocurrencyDrawerTable({
                 }`}
               >
                 <h2 className="shrink-0 pl-[10px] text-lg font-medium uppercase text-black dark:text-white sm:text-xl md:pl-0 2xl:text-xl 3xl:text-2xl">
-                  Cryptocurrency Prices
+                  Cryptocurrency Pricesss
                 </h2>
                 <GlobalFilter
                   filter={globalFilter}

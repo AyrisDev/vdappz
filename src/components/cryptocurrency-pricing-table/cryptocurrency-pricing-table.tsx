@@ -28,7 +28,7 @@ const COLUMNS = [
     maxWidth: 20,
   },
   {
-    Header: () => <div className="">Coin Name</div>,
+    Header: () => <div className="">Coin Names</div>,
     accessor: 'name',
     // @ts-ignore
     Cell: ({ row }) => (
@@ -40,8 +40,8 @@ const COLUMNS = [
     minWidth: 100,
   },
   {
-    Header: () => <div className="">Price</div>,
-    accessor: 'current_price',
+    Header: () => <div className="">Price/VCE</div>,
+    accessor: 'current_pricevce',
     // @ts-ignore
     Cell: ({ cell: { value } }) => (
       <div className="ltr:text-left rtl:text-left">${value}</div>
@@ -50,56 +50,25 @@ const COLUMNS = [
     maxWidth: 120,
   },
   {
-    Header: () => <div className="">1h%</div>,
-    accessor: 'price_change_percentage_1h_in_currency',
-    // @ts-ignore
-    Cell: ({ cell: { value } }) => (
-      <div
-        className={`${
-          Math.sign(value) === 1 ? 'text-green-500' : 'text-red-500'
-        }`}
-      >
-        {Math.sign(value) === 1 ? '+' : ''}
-        {value}%
-      </div>
-    ),
-    maxWidth: 80,
-  },
-  {
-    Header: () => <div className="">24h%</div>,
-    accessor: 'price_change_percentage_24h_in_currency',
-    // @ts-ignore
-    Cell: ({ cell: { value } }) => (
-      <div
-        className={`${
-          Math.sign(value) === 1 ? 'text-green-500' : 'text-red-500'
-        }`}
-      >
-        {Math.sign(value) === 1 ? '+' : ''}
-        {value}%
-      </div>
-    ),
-    maxWidth: 80,
-  },
-  {
-    Header: () => <div className="">Circulating Supply</div>,
-    accessor: 'circulating_supply',
+    Header: () => <div className="">Price/BTC</div>,
+    accessor: 'current_price',
     // @ts-ignore
     Cell: ({ cell: { value } }) => (
       <div className="ltr:text-left rtl:text-left">${value}</div>
     ),
-    minWidth: 200,
-    maxWidth: 300,
+    minWidth: 80,
+    maxWidth: 120,
   },
+
   {
-    Header: () => <div className="">Volume (24h)</div>,
-    accessor: 'total_volume',
+    Header: () => <div className="">Total Balance</div>,
+    accessor: 'balance',
     // @ts-ignore
     Cell: ({ cell: { value } }) => (
       <div className="ltr:text-left rtl:text-left">${value}</div>
     ),
-    minWidth: 100,
-    maxWidth: 300,
+    minWidth: 80,
+    maxWidth: 120,
   },
 ];
 
