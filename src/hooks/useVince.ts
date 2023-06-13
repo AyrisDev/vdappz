@@ -10,7 +10,7 @@ const VCE = {
 
 export const vinceTestnet = {
   rpc: 'https://testnet.vincescan.com/',
-  rest: 'http://154.53.47.14:1317',
+  rest: 'https://lcd-node.vincescan.com/',
   chainId: 'vince_1903-1',
   chainName: 'VinceChain ',
   stakeCurrency: VCE,
