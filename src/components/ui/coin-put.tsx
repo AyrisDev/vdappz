@@ -55,7 +55,7 @@ export default function CoinInput({
 
     setVisibleCoinList(false);
   }
-  function handleSelectedCoin(coin: CoinTypes) {
+  function handleSelectedCoinn(coin: CoinTypes) {
     setSelectedCoinn(coin);
     setVisibleCoinList(false);
   }
@@ -213,7 +213,7 @@ export default function CoinInput({
                 >
                   <CoinSelectView
                     onSelect={(selectedCoinn) =>
-                      handleSelectedCoin(selectedCoinn)
+                      handleSelectedCoinn(selectedCoinn)
                     }
                   />
                 </motion.div>
