@@ -11,11 +11,17 @@ interface FarmListTypes {
   apr: string;
   liquidity: string;
   multiplier: string;
+  poolId: string;
+  fees: string;
+  volume: string;
 }
 
 export default function FarmList({
   from,
   to,
+  poolId,
+  volume,
+  fees,
   earned,
   apr,
   liquidity,
@@ -32,28 +38,20 @@ export default function FarmList({
         onClick={() => setIsExpand(!isExpand)}
       >
         <div className="col-span-2 px-4 sm:col-auto sm:px-8 xl:px-4">
-          <CurrencySwapIcons from={setFrom} to={setTo} />
+          <CurrencySwapIcons from={setFrom} to={setTo} poolId={poolId} />
         </div>
         <div className="px-4 text-xs font-medium uppercase tracking-wider text-black dark:text-white sm:px-8 sm:text-sm">
-          <span className="mb-1 block font-medium text-gray-600 dark:text-gray-400 sm:hidden">
-            Earned
-          </span>
-          {earned}
-        </div>
-        <div className="px-4 text-xs font-medium uppercase tracking-wider text-black dark:text-white sm:px-8 sm:text-sm">
-          <span className="mb-1 block font-medium text-gray-600 dark:text-gray-400 sm:hidden">
-            APR
-          </span>
-          {apr}
-          <span className="hidden font-normal text-gray-600 dark:text-gray-400 sm:block">
-            Annualized
-          </span>
-        </div>
-        <div className="hidden px-4 text-xs font-medium uppercase tracking-wider text-black dark:text-white sm:px-8 sm:text-sm lg:block">
           {liquidity}
         </div>
+        <div className="px-4 text-xs font-medium uppercase tracking-wider text-black dark:text-white sm:px-8 sm:text-sm">
+          {volume}
+          <span className="hidden font-normal text-gray-600 dark:text-gray-400 sm:block"></span>
+        </div>
         <div className="hidden px-4 text-xs font-medium uppercase tracking-wider text-black dark:text-white sm:px-8 sm:text-sm lg:block">
-          {multiplier}
+          {fees}
+        </div>
+        <div className="hidden px-4 text-xs font-medium uppercase tracking-wider text-black dark:text-white sm:px-8 sm:text-sm lg:block">
+          {apr}
         </div>
       </div>
       <AnimatePresence initial={false}>
@@ -70,9 +68,17 @@ export default function FarmList({
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
             <div className="border-t border-dashed border-gray-200 px-4 py-4 dark:border-gray-700 sm:px-8 sm:py-6">
-              <div className="mb-6 flex items-center justify-center rounded-lg bg-gray-100 p-3 text-center text-xs font-medium uppercase tracking-wider text-gray-900 dark:bg-gray-900 dark:text-white sm:h-13 sm:text-sm">
-                get {from}/{to} lp tokens for staking
+              <div className="grid grid-cols-2">
+                <div className="mb-6 flex flex-col items-center justify-center space-y-2 rounded-lg bg-gray-100 p-3 text-center text-xs font-medium uppercase tracking-wider text-gray-900 dark:bg-gray-900 dark:text-white sm:h-13 sm:text-sm">
+                  <span> Level 1 </span>
+                  <span> Earn swap fees 4.05% APR</span>
+                </div>
+                <div className="mb-6 flex flex-col items-center justify-center space-y-2 rounded-lg bg-gray-100 p-3 text-center text-xs font-medium uppercase tracking-wider text-gray-900 dark:bg-gray-900 dark:text-white sm:h-13 sm:text-sm">
+                  <span> Level 2 </span>
+                  <span> Bond liquidity </span>
+                </div>
               </div>
+
               <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:hidden">
                 <div className="flex flex-col gap-3 sm:gap-4">
                   <TransactionInfo

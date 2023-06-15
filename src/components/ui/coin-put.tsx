@@ -9,7 +9,7 @@ import { useLockBodyScroll } from '@/lib/hooks/use-lock-body-scroll';
 import { coinList } from '@/data/static/coin-list';
 import Button from '@/components/ui/button';
 import { SwapIcon } from '@/components/icons/swap-icon';
-
+import ActiveLink from '@/components/ui/links/active-link';
 import TransactionInfo from '@/components/ui/transaction-info';
 // dynamic import
 const CoinSelectView = dynamic(
@@ -78,7 +78,7 @@ export default function CoinInput({
           >
             <div className="min-w-[80px] border-r border-gray-200 p-3 transition-colors duration-200 group-hover:border-gray-900 dark:border-gray-700 dark:group-hover:border-gray-600">
               <span className="mb-1.5 block text-xs uppercase text-gray-600 dark:text-gray-400">
-                From
+                50%
               </span>
               <button
                 onClick={() => setVisibleCoinList(true)}
@@ -123,7 +123,7 @@ export default function CoinInput({
           >
             <div className="min-w-[80px] border-r border-gray-200 p-3 transition-colors duration-200 group-hover:border-gray-900 dark:border-gray-700 dark:group-hover:border-gray-600">
               <span className="mb-1.5 block text-xs uppercase text-gray-600 dark:text-gray-400">
-                To
+                50%
               </span>
 
               <button
@@ -234,14 +234,39 @@ export default function CoinInput({
           {selectedCoinn?.code}
         </span>
       </div>
-      <div className="mt-4 flex flex-col gap-4 xs:gap-[18px] ">
-        <TransactionInfo
-          label={'Min. Received'}
-          value={((selectedCoin?.price * value) / selectedCoinn?.price) * 0.99}
-          name={selectedCoinn?.code}
-        />
 
-        <TransactionInfo label={'Swap Fee'} value={'1%'} />
+      <div className="flex flex-col gap-4 xs:gap-[18px]">
+        <div
+          className={cn(
+            'flex items-center justify-between dark:text-gray-300',
+            className
+          )}
+        >
+          <span className="font-medium"></span>
+          <div className="flex flex-col"></div>
+        </div>
+      </div>
+      <div className="mt-6 grid grid-cols-2 gap-2.5 xs:mt-8">
+        <ActiveLink href="/liquidity-position">
+          <Button
+            size="large"
+            shape="rounded"
+            fullWidth={true}
+            className="uppercase"
+          >
+            Approve {selectedCoin?.code}
+          </Button>
+        </ActiveLink>
+        <ActiveLink href="/liquidity-position">
+          <Button
+            size="large"
+            shape="rounded"
+            fullWidth={true}
+            className="uppercase"
+          >
+            Approve {selectedCoinn?.code}
+          </Button>
+        </ActiveLink>
       </div>
     </>
   );

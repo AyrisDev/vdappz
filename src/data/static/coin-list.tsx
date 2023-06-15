@@ -14,6 +14,12 @@ export const coinList = [
     price: 28204.0,
   },
   {
+    icon: <Bitcoin />,
+    code: 'VCE',
+    name: 'Vince',
+    price: 28204.0,
+  },
+  {
     icon: <Ethereum />,
     code: 'ETH',
     name: 'Ethereum',

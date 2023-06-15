@@ -17,7 +17,7 @@ export const menuItems = [
     href: routes.home,
   },
   {
-    name: 'Live Pricing',
+    name: 'Assets',
     icon: <LivePricing />,
     href: routes.livePricing,
   },
@@ -36,35 +36,14 @@ export const menuItems = [
     icon: <PoolIcon />,
     href: routes.liquidity,
   },
+
   {
-    name: 'NFTs',
-    icon: <CompassIcon />,
-    href: routes.search,
-    dropdownItems: [
-      {
-        name: 'Explore NFTs',
-        icon: <CompassIcon />,
-        href: routes.search,
-      },
-      {
-        name: 'Create NFT',
-        icon: <PlusCircle />,
-        href: routes.createNft,
-      },
-      {
-        name: 'NFT Details',
-        icon: <DiskIcon />,
-        href: routes.nftDetails,
-      },
-    ],
-  },
-  {
-    name: 'Profile',
+    name: 'Validators',
     icon: <ProfileIcon />,
-    href: routes.profile,
+    href: routes.validators,
   },
   {
-    name: 'Vote',
+    name: 'Governance',
     icon: <VoteIcon />,
     href: routes.vote,
     dropdownItems: [

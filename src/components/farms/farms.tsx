@@ -119,82 +119,6 @@ function Search() {
   );
 }
 
-function StackedSwitch() {
-  const [isStacked, setIsStacked] = useState(false);
-  return (
-    <Switch
-      checked={isStacked}
-      onChange={setIsStacked}
-      className="flex items-center gap-2 text-gray-400 sm:gap-3"
-    >
-      <div
-        className={cn(
-          isStacked ? 'bg-brand dark:bg-white' : 'bg-gray-200 dark:bg-gray-500',
-          'relative inline-flex h-[22px] w-10 items-center rounded-full transition-colors duration-300'
-        )}
-      >
-        <span
-          className={cn(
-            isStacked
-              ? 'bg-white ltr:translate-x-5 rtl:-translate-x-5 dark:bg-light-dark'
-              : 'bg-white ltr:translate-x-0.5 rtl:-translate-x-0.5 dark:bg-light-dark',
-            'inline-block h-[18px] w-[18px] transform rounded-full bg-white transition-transform duration-200'
-          )}
-        />
-      </div>
-      <span className="inline-flex text-xs font-medium uppercase tracking-wider text-gray-900 dark:text-white sm:text-sm">
-        Stacked only
-      </span>
-    </Switch>
-  );
-}
-
-function Status() {
-  const [status, setStatus] = useState('live');
-  return (
-    <RadioGroup
-      value={status}
-      onChange={setStatus}
-      className="flex items-center sm:gap-3"
-    >
-      <RadioGroup.Option value="live">
-        {({ checked }) => (
-          <span
-            className={`relative flex h-11 w-20 cursor-pointer items-center justify-center rounded-lg text-center text-xs font-medium tracking-wider sm:w-24 sm:text-sm ${
-              checked ? 'text-white' : 'text-brand dark:text-white/50'
-            }`}
-          >
-            {checked && (
-              <motion.span
-                className="absolute bottom-0 left-0 right-0 h-full w-full rounded-lg bg-brand shadow-large"
-                layoutId="statusIndicator"
-              />
-            )}
-            <span className="relative">LIVE</span>
-          </span>
-        )}
-      </RadioGroup.Option>
-      <RadioGroup.Option value="finished">
-        {({ checked }) => (
-          <span
-            className={`relative flex h-11 w-20 cursor-pointer items-center justify-center rounded-lg text-center text-xs font-medium tracking-wider sm:w-24 sm:text-sm ${
-              checked ? 'text-white' : 'text-brand dark:text-white/50'
-            }`}
-          >
-            {checked && (
-              <motion.span
-                className="absolute bottom-0 left-0 right-0 h-full w-full rounded-lg bg-brand shadow-large"
-                layoutId="statusIndicator"
-              />
-            )}
-            <span className="relative">FINISHED</span>
-          </span>
-        )}
-      </RadioGroup.Option>
-    </RadioGroup>
-  );
-}
-
 export default function Farms() {
   const { layout } = useLayout();
   return (
@@ -208,14 +132,11 @@ export default function Farms() {
         )}
       >
         <div className="flex items-center justify-between gap-4">
-          <Status />
           <div
             className={cn(
               layout === LAYOUT_OPTIONS.RETRO ? 'lg:hidden' : 'md:hidden'
             )}
-          >
-            <StackedSwitch />
-          </div>
+          ></div>
         </div>
 
         <div className="flex items-center justify-between gap-4 lg:gap-8">
@@ -224,9 +145,7 @@ export default function Farms() {
               'hidden shrink-0 ',
               layout === LAYOUT_OPTIONS.RETRO ? 'lg:block' : 'md:block'
             )}
-          >
-            <StackedSwitch />
-          </div>
+          ></div>
           <Search />
           <SortList sortData={sort} />
         </div>
@@ -234,19 +153,19 @@ export default function Farms() {
 
       <div className="mb-3 hidden grid-cols-3 gap-6 rounded-lg bg-white shadow-card dark:bg-light-dark sm:grid lg:grid-cols-5">
         <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
-          Pool
+          Pool Name/Number
         </span>
         <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
-          Earned
-        </span>
-        <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
-          APR
-        </span>
-        <span className="hidden px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300 lg:block">
           Liquidity
         </span>
+        <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
+          Volume(24H)
+        </span>
+        <span className="hidden px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300 lg:block">
+          Fees(7D)
+        </span>
         <span className="hidden px-4 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300 lg:block">
-          Multiplier
+          APR
         </span>
       </div>
 
@@ -259,24 +178,38 @@ export default function Farms() {
           apr={farm.apr}
           liquidity={farm.liquidity}
           multiplier={farm.multiplier}
+          poolId={farm.poolId}
+          fees={farm.fees}
+          volume={farm.volume}
         >
           <div className="mb-4 grid grid-cols-2 gap-4 sm:mb-6 sm:gap-6">
-            <input
-              type="number"
-              placeholder="0.0"
-              className="spin-button-hidden h-11 appearance-none rounded-lg border-solid border-gray-200 bg-body px-4 text-sm tracking-tighter text-gray-900 placeholder:text-gray-600 focus:border-gray-900 focus:shadow-none focus:outline-none focus:ring-0 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-600 sm:h-13"
-            />
-            <input
-              type="number"
-              placeholder="0.0"
-              className="spin-button-hidden h-11 appearance-none rounded-lg border-solid border-gray-200 bg-body px-4 text-sm tracking-tighter text-gray-900 placeholder:text-gray-600 focus:border-gray-900 focus:shadow-none focus:outline-none focus:ring-0 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-600 sm:h-13"
-            />
+            <div className="mb-4 grid grid-rows-2 gap-4 sm:mb-6 sm:gap-6">
+              <input
+                type="number"
+                placeholder="0.0"
+                className="spin-button-hidden h-11 appearance-none rounded-lg border-solid border-gray-200 bg-body px-4 text-sm tracking-tighter text-gray-900 placeholder:text-gray-600 focus:border-gray-900 focus:shadow-none focus:outline-none focus:ring-0 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-600 sm:h-13"
+              />
+              <div className="mb-4 grid grid-cols-2 gap-4 sm:mb-6 sm:gap-6">
+                <Button shape="rounded" fullWidth size="large">
+                  Remove Liquidity
+                </Button>
+                <Button shape="rounded" fullWidth size="large">
+                  Add Liquidity
+                </Button>
+              </div>
+            </div>
+            <div className="mb-4 grid grid-rows-2 gap-4 sm:mb-6 sm:gap-6">
+              <input
+                type="number"
+                placeholder="0.0"
+                className="spin-button-hidden h-11 appearance-none rounded-lg border-solid border-gray-200 bg-body px-4 text-sm tracking-tighter text-gray-900 placeholder:text-gray-600 focus:border-gray-900 focus:shadow-none focus:outline-none focus:ring-0 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-600 sm:h-13"
+              />
+
+              <Button shape="rounded" fullWidth size="large">
+                Bond Shares
+              </Button>
+            </div>
           </div>
-          <ActiveLink href={routes.farms}>
-            <Button shape="rounded" fullWidth size="large">
-              APPROVE
-            </Button>
-          </ActiveLink>
         </FarmList>
       ))}
     </div>

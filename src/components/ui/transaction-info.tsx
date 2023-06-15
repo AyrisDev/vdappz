@@ -2,6 +2,7 @@ import cn from 'classnames';
 interface TransactionInfoTypes {
   label: string;
   value?: string | number;
+  name?: string | number;
   className?: string;
 }
 
@@ -9,6 +10,7 @@ export default function TransactionInfo({
   label,
   value,
   className,
+  name,
 }: TransactionInfoTypes) {
   return (
     <div
@@ -18,7 +20,9 @@ export default function TransactionInfo({
       )}
     >
       <span className="font-medium">{label}</span>
-      <span>{value ? value : '_ _'}</span>
+      <div className="flex flex-col">
+        {value ? value : '_ _'} {name}
+      </div>
     </div>
   );
 }

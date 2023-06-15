@@ -24,10 +24,6 @@ const tradeMenu = [
     name: 'Liquidity',
     value: routes.liquidity,
   },
-  {
-    name: 'Vote',
-    value: routes.vote,
-  },
 ];
 
 function ActiveNavLink({ href, title, isActive, className }: any) {
@@ -39,7 +35,7 @@ function ActiveNavLink({ href, title, isActive, className }: any) {
     <ActiveLink
       href={{ pathname: href, query: restQuery }}
       className={cn(
-        'relative z-[1] inline-flex items-center py-1.5 px-3',
+        'relative z-[1] inline-flex items-center px-3 py-1.5',
         className
       )}
       activeClassName="font-medium text-white"
@@ -47,7 +43,7 @@ function ActiveNavLink({ href, title, isActive, className }: any) {
       <span>{title}</span>
       {isActive && (
         <motion.span
-          className="absolute left-0 right-0 bottom-0 -z-[1] h-full w-full rounded-lg bg-brand shadow-large"
+          className="absolute bottom-0 left-0 right-0 -z-[1] h-full w-full rounded-lg bg-brand shadow-large"
           layoutId="activeNavLinkIndicator"
         />
       )}
@@ -85,7 +81,7 @@ export default function Trade({ children }: React.PropsWithChildren<{}>) {
                 href={routes.charts}
                 className="inline-flex items-center justify-between gap-1.5 rounded-md px-3 py-2 text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700/70"
               >
-                Charts
+                Swaps
                 <ExportIcon className="h-auto w-2.5" />
               </AnchorLink>
               <button className="inline-flex items-center justify-between gap-1.5 rounded-md px-3 py-2 uppercase text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700/70">
@@ -95,21 +91,17 @@ export default function Trade({ children }: React.PropsWithChildren<{}>) {
             </Listbox>
           )}
           <div className="hidden items-center justify-between text-gray-600 dark:text-gray-400 sm:flex">
-            {tradeMenu.map((item) => (
-              <ActiveNavLink
-                key={item.name}
-                href={item.value}
-                title={item.name}
-                isActive={item.value === router.pathname}
-              />
-            ))}
-            <AnchorLink
-              href="/"
-              className="inline-flex items-center gap-1.5 py-1.5 px-3"
-            >
-              Charts
-              <ExportIcon className="h-auto w-2.5" />
-            </AnchorLink>
+            <div>
+              {tradeMenu.map((item) => (
+                <ActiveNavLink
+                  key={item.name}
+                  href={item.value}
+                  title={item.name}
+                  isActive={item.value === router.pathname}
+                />
+              ))}
+            </div>
+
             <Button
               variant="transparent"
               shape="circle"
