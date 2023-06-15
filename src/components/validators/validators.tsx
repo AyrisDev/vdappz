@@ -1,5 +1,5 @@
 import Button from '@/components/ui/button';
-import FarmList from '@/components/assets/list';
+import FarmList from '@/components/validators/list';
 import ActiveLink from '@/components/ui/links/active-link';
 import { AssetsData } from '@/data/static/assets-data';
 import { Fragment, useState } from 'react';
@@ -46,19 +46,20 @@ export default function Farms() {
         </div>
       </div>
 
-      <div className="mb-3 hidden grid-cols-3 gap-6 rounded-lg bg-white shadow-card dark:bg-light-dark sm:grid lg:grid-cols-4">
-        <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
-          Assets
-        </span>
-        <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
-          Balance
-        </span>
-        <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
-          Price/BTC
-        </span>
-        <span className="hidden px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300 lg:block">
-          Price/VCE
-        </span>
+      <div className="mb-3 hidden min-h-[70px] grid-cols-3 items-center gap-6 rounded-lg bg-white shadow-card dark:bg-light-dark/80 sm:grid lg:grid-cols-2">
+        <div>
+          <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
+            Validator123
+          </span>
+        </div>
+        <div className="text-right">
+          <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
+            Voting Power
+          </span>
+          <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
+            Commission
+          </span>
+        </div>
       </div>
 
       {AssetsData.map((farm) => (

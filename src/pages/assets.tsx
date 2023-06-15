@@ -6,10 +6,7 @@ import Assets from '@/components/assets/assets';
 const AssetsPage: NextPageWithLayout = () => {
   return (
     <>
-      <NextSeo
-        title="Farms"
-        description="Criptic - React Next Web3 NFT Crypto Dashboard Template"
-      />
+      <NextSeo title="Assets" description="Vince Chain" />
       <Assets />
     </>
   );

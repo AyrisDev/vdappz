@@ -28,18 +28,16 @@ export function CoinCard({
 }: CoinCardProps) {
   return (
     <div
-      className="relative rounded-lg p-6 xl:p-8"
+      className="relative items-center rounded-lg p-6 xl:p-8"
       style={{ backgroundColor: color }}
     >
-      <h4 className="mb-8 text-sm font-medium uppercase tracking-wider text-gray-900">
+      <h4 className=" text-lg uppercase tracking-wider text-gray-900">
         {name}
       </h4>
-      <div className="relative h-20 lg:h-24 xl:h-28 3xl:h-36">
-        <Image src={logo} alt={name} height={112} priority />
-      </div>
-      <div className="mt-8 mb-2 text-sm font-medium tracking-wider text-gray-900 lg:text-lg 2xl:text-xl 3xl:text-2xl">
+
+      <div className="mb-2 mt-8 text-sm font-medium tracking-wider text-gray-900 lg:text-lg 2xl:text-xl 3xl:text-2xl">
         {balance}
-        <span className="uppercase"> {symbol}</span>
+        <span className="uppercase"> </span>
       </div>
       <div className="flex items-center justify-between text-xs font-medium 2xl:text-sm">
         <span className="tracking-wider text-gray-600">{usdBalance} USD</span>
@@ -104,7 +102,7 @@ export default function CoinSlider({ coins }: CoinSliderProps) {
         breakpoints={sliderBreakPoints}
         observer={true}
         dir="ltr"
-        className="dark:[&_.swiper-scrollbar_>_.swiper-scrollbar-drag]:bg-body/50"
+        className="flex items-center justify-center dark:[&_.swiper-scrollbar_>_.swiper-scrollbar-drag]:bg-body/50"
       >
         {coins.map((coin) => (
           <SwiperSlide key={coin.id}>

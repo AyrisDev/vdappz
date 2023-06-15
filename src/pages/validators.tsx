@@ -6,10 +6,7 @@ import Validators from '@/components/validators/validators';
 const ValidatorsPage: NextPageWithLayout = () => {
   return (
     <>
-      <NextSeo
-        title="Farms"
-        description="Criptic - React Next Web3 NFT Crypto Dashboard Template"
-      />
+      <NextSeo title="Validators" description="Vince Chain" />
       <Validators />
     </>
   );

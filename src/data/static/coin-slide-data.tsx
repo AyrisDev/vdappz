@@ -7,7 +7,7 @@ import BinanceImage from '@/assets/images/coin/binance.svg';
 export const coinSlideData = [
   {
     id: '0',
-    name: 'Bitcoin',
+    name: 'Overview',
     symbol: 'BTC',
     balance: '0.2231345',
     usdBalance: '11,032.24',
@@ -18,7 +18,7 @@ export const coinSlideData = [
   },
   {
     id: '1',
-    name: 'Tether',
+    name: 'Staked Assets',
     symbol: 'USDT',
     balance: '1.2345',
     usdBalance: '1,032.24',
@@ -29,7 +29,7 @@ export const coinSlideData = [
   },
   {
     id: '2',
-    name: 'Cardano',
+    name: 'Available Assets',
     symbol: 'ADA',
     balance: '1.2370',
     usdBalance: '532.94',
@@ -37,16 +37,5 @@ export const coinSlideData = [
     change: '+12.5%',
     isChangePositive: true,
     color: '#DBE3FF',
-  },
-  {
-    id: '3',
-    name: 'Binance',
-    symbol: 'BUSD',
-    balance: '240.55',
-    usdBalance: '340.24',
-    logo: BinanceImage,
-    change: '+1.5%',
-    isChangePositive: true,
-    color: '#FBF5D5',
   },
 ];
