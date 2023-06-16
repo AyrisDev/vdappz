@@ -3,7 +3,7 @@ import BitcoinImage from '@/assets/images/coin/bitcoin.svg';
 import TetherImage from '@/assets/images/coin/tether.svg';
 import CardanoImage from '@/assets/images/coin/cardano.svg';
 import BinanceImage from '@/assets/images/coin/binance.svg';
-
+import VceImage from '@/assets/images/coin/vce.svg';
 export const coinSlideData = [
   {
     id: '0',

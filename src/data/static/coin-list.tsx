@@ -5,7 +5,7 @@ import { Bnb } from '@/components/icons/bnb';
 import { Usdc } from '@/components/icons/usdc';
 import { Cardano } from '@/components/icons/cardano';
 import { Doge } from '@/components/icons/doge';
-
+import { Vince } from '@/components/icons/vince';
 export const coinList = [
   {
     icon: <Bitcoin />,
@@ -14,7 +14,7 @@ export const coinList = [
     price: 28204.0,
   },
   {
-    icon: <Bitcoin />,
+    icon: <Vince />,
     code: 'VCE',
     name: 'Vince',
     price: 28204.0,
