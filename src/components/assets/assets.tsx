@@ -1,20 +1,11 @@
-import Button from '@/components/ui/button';
 import FarmList from '@/components/assets/list';
-import ActiveLink from '@/components/ui/links/active-link';
+
 import { AssetsData } from '@/data/static/assets-data';
-import { Fragment, useState } from 'react';
-import { motion } from 'framer-motion';
+
 import cn from 'classnames';
-import { Transition } from '@/components/ui/transition';
-import { RadioGroup } from '@/components/ui/radio-group';
-import { Listbox } from '@/components/ui/listbox';
-import { Switch } from '@/components/ui/switch';
-import { ChevronDown } from '@/components/icons/chevron-down';
-import { SearchIcon } from '@/components/icons/search';
+
 import { useLayout } from '@/lib/hooks/use-layout';
 import { LAYOUT_OPTIONS } from '@/lib/constants';
-import HorizontalThreeDots from '@/components/icons/horizontal-three-dots';
-import routes from '@/config/routes';
 
 export default function Farms() {
   const { layout } = useLayout();

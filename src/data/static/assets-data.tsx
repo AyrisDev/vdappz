@@ -22,7 +22,7 @@ export const AssetsData = [
   },
   {
     id: 4,
-    asset: 'BTC',
+    asset: 'VCE',
 
     priceBTC: '0.001',
     priceVCE: '0.002',
