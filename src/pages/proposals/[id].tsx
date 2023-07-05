@@ -8,8 +8,8 @@ import { NextSeo } from 'next-seo';
 import cn from 'classnames';
 import routes from '@/config/routes';
 import Link from 'next/link';
-const ProposalsPage: NextPageWithLayout = ({ data }) => {
-  const proposal = data.proposal;
+const ProposalsPage: NextPageWithLayout = ({ data }: any) => {
+  const proposal = data.proposal as any;
 
   return (
     <>
@@ -92,7 +92,7 @@ ProposalsPage.getLayout = function getLayout(page) {
 };
 
 export default ProposalsPage;
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
   const { id } = context.query.id;

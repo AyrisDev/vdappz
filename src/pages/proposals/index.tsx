@@ -15,8 +15,8 @@ import RootLayout from '@/layouts/_root-layout';
 import { useLayout } from '@/lib/hooks/use-layout';
 import { LAYOUT_OPTIONS } from '@/lib/constants';
 
-const ProposalsPage: NextPageWithLayout = ({ data }) => {
-  const proposal = data.proposals;
+const ProposalsPage: NextPageWithLayout = ({ data }: any) => {
+  const proposal = data.proposals as any;
 
   const router = useRouter();
   const { layout } = useLayout();
