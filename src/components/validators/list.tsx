@@ -14,7 +14,7 @@ interface FarmListTypes {
 
 export default function FarmList({
   asset,
-
+  name,
   priceBTC,
   priceVCE,
   children,
@@ -30,7 +30,7 @@ export default function FarmList({
       >
         <div>
           <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
-            Ayris.Dev
+            {name}
           </span>
         </div>
         <div className="text-right">

@@ -5,14 +5,15 @@ const VCE = {
   coinMinimalDenom: 'avce',
   coinDecimals: 18,
   coinGeckoId: 'vince',
-  coinImageUrl: 'https://github.com/AyrisDev/vinceChainAssets/blob/main/icon.png',
+  coinImageUrl:
+    'https://github.com/AyrisDev/vinceChainAssets/blob/main/icon.png',
 };
 
 export const vinceTestnet = {
-  rpc: process.env.NEXT_PUBLIC_RPC_URL,
-  rest: process.env.NEXT_PUBLIC_REST_URL,
+  rpc: 'https://api-testnet.vincechain.com',
+  rest: 'https://lcd-testnet.vincechain.com',
   chainId: 'vince_1903',
-  chainName: 'VinceChain ',
+  chainName: 'VinceChain',
   stakeCurrency: VCE,
   bip44: {
     coinType: 60,

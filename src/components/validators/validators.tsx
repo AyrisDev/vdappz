@@ -16,7 +16,7 @@ import { LAYOUT_OPTIONS } from '@/lib/constants';
 import HorizontalThreeDots from '@/components/icons/horizontal-three-dots';
 import routes from '@/config/routes';
 
-export default function Farms() {
+export default function Farms({ validators }) {
   const { layout } = useLayout();
   return (
     <div className="mx-auto w-full">
@@ -49,7 +49,7 @@ export default function Farms() {
       <div className="mb-3 hidden min-h-[70px] grid-cols-3 items-center gap-6 rounded-lg bg-white shadow-card dark:bg-light-dark/80 sm:grid lg:grid-cols-2">
         <div>
           <span className="px-6 py-6 text-sm tracking-wider text-gray-500 dark:text-gray-300">
-            Validator123
+            Validator
           </span>
         </div>
         <div className="text-right">
@@ -62,12 +62,10 @@ export default function Farms() {
         </div>
       </div>
 
-      {AssetsData.map((farm) => (
+      {validators.map((validator) => (
         <FarmList
-          key={farm.id}
-          asset={farm.asset}
-          priceBTC={farm.priceBTC}
-          priceVCE={farm.priceVCE}
+          key={validator.id}
+          name={validator.description.moniker}
         ></FarmList>
       ))}
     </div>

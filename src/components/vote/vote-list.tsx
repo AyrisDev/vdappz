@@ -4,13 +4,19 @@ import { ExportIcon } from '@/components/icons/export-icon';
 // static data
 import { getVotesByStatus } from '@/data/static/vote-data';
 
-export default function VoteList({ voteStatus }: { voteStatus: string }) {
+export default function VoteList({
+  voteStatus,
+  proposal,
+}: {
+  voteStatus: string;
+  proposal: any;
+}) {
   const { votes, totalVote } = getVotesByStatus(voteStatus);
   return (
     <LayoutGroup>
       <motion.div layout initial={{ borderRadius: 16 }} className="rounded-2xl">
-        {totalVote > 0 ? (
-          votes.map((vote: any) => (
+        {proposal ? (
+          proposal.map((vote: any) => (
             <VoteDetailsCard key={`${vote.title}-key-${vote.id}`} vote={vote} />
           ))
         ) : (
